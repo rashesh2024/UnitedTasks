@@ -1,0 +1,7 @@
+/* tr{
+    
+} */
+tr:hover{
+    transition: 0.3s;
+    background-color: bisque;
+}
