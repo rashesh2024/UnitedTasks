@@ -1,0 +1,45 @@
+<% var result = result || null %>
+<!-- Line Break -->
+<% if (result) { %> 
+    <!--  -->
+    <% if(category == "combo") { %>
+    <!--  -->
+        <label for="<%= name %>" class="form-lable"><%= name %> :</label>
+
+        <select name="<%= name %>" id="" class="form-control">
+        <% result.forEach(element => { %>
+            <option value="<%= element.opt_name %>"><%= element.opt_name %></option>
+        <%}); %>
+        </select>
+    <% } %>
+    <!-- Line Break  -->
+    <% if(category == "multiselect") { %>
+    <!--  -->
+        <label for="<%= name %>" class="form-lable"><%= name %> :</label>
+        <select name="<%= name %>" id="" class="form-control" multiple>
+        <% result.forEach(element => { %>
+            <option value="<%= element.opt_name %>"><%= element.opt_name %></option>
+        <% }); %>
+        </select>
+    <% } %>
+
+    <!--  -->
+    <% if(category == "checkbox") { %>
+    <!--  -->
+        <label for="<%= name %>" class="form-lable"><%= name %> :</label>
+        <% result.forEach(element => { %>
+            <input type="checkbox" name="<%= element.opt_name %>" id="" class="form"/>
+            <label for="<%= element.opt_name %> " class="form-lable"><%= element.opt_name %>:</label>
+        <% }); %> 
+    <% } %>
+
+    <!--  -->
+    <% if(category == "radio") { %>
+        <!--  -->
+        <label for="<%= name %>" class="form-lable"><%= name %> :</label>
+        <% result.forEach(element => { %>
+            <input type="radio" name="<%= element.opt_name %>" class="" id="" /> 
+            <label for="<%= element.opt_name %> class="form-lable"> <%= element.opt_name %> :</label> 
+        <%});%> 
+    <% } %> 
+<% } %>

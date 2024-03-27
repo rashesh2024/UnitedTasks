@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<%- include('../partials/header'); %>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container-lg">
+					<form action="/form" method="post">
+						<table>
+							<tr>
+								<td>
+									<label for="type" class="form-lable">Enter Catogory:</label>
+								</td>
+								<td>
+									<label for="name" class="form-lable">Enter for What:</label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<select name="type" id="type" class="form-control">
+										<option value="radio">Radio</option>
+										<option value="checkbox">Check Bbx</option>
+										<option value="combo">Combo</option>
+										<option value="multiselect">MultiSelect</option>
+									</select>
+								</td>
+								<td>
+									<select name="name" id="type" class="form-control">
+										<option value="location">Location</option>
+										<option value="technologies">Technologies</option>
+										<option value="languages">Languages</option>
+										<option value="department">Department</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input
+										type="submit"
+										value="Submit"
+										class="btn-primary form-control"
+									/>
+								</td>
+							</tr>
+						</table>
+					</form>
+
+					<% var result = result || null %>
+					<!-- Line Break -->
+					<% if (result) { %> 
+						<!--  -->
+					<% if(category == "combo") { %>
+					<!--  -->
+					<label for="<%= name %>" class="form-lable"><%= name %> :</label>
+
+					<select name="<%= name %>" id="" class="form-control">
+						<% result.forEach(element => { %>
+						<option value="<%= element.opt_name %>">
+							<%= element.opt_name %>
+						</option>
+						<%}); %>
+					</select>
+					<% } %>
+					<!-- Line Break  -->
+					<% if(category == "multiselect") { %>
+					<!--  -->
+					<label for="<%= name %>" class="form-lable"><%= name %> :</label>
+					<select name="<%= name %>" id="" class="form-control" multiple>
+						<% result.forEach(element => { %>
+						<option value="<%= element.opt_name %>">
+							<%= element.opt_name %>
+						</option>
+					<% }); %>
+					</select>
+					<% } %>
+
+					<!--  -->
+					<% if(category == "checkbox") { %>
+					<!--  -->
+					<label for="<%= name %>" class="form-lable"><%= name %> :</label>
+					<% result.forEach(element => { %>
+					<input type="checkbox" name="<%= element.opt_name %>" id="" class="form"/>
+					<label for="<%= element.opt_name %> " class="form-lable"><%= element.opt_name %>  :</label>
+					
+					<% }); %> 
+					<% } %>
+
+					<!--  -->
+					<% if(category == "radio") { %>
+					<!--  -->
+					<label for="<%= name %>" class="form-lable"><%= name %> :</label>
+					<% result.forEach(element => { %>
+					<input type="radio" name="<%= element.opt_name %>" class="" id="" /> 
+					<label for="<%= element.opt_name %> class="form-lable"> <%= element.opt_name %> :</label> 
+					<%});%> 
+					<% } %> 
+					<% } %>
+				</div>
+			</div>
+		</main>
+
+		<footer><%- include('../partials/footer'); %></footer>
+	</body>
+</html>
