@@ -1,0 +1,453 @@
+:root{
+    --DARK :#0A2259;
+    --BLUE :#6A88B6;
+    --LIGHT-BLUE : #F0F6FF;
+    --ORANGE :#F2A33A;
+    --TEXT-GRAY: #AAAAAA;
+    --GRAY: #F0F6FF;
+    --font:'Panchang'; 
+}
+
+
+body{   
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+    /* font-family:var(--font); */
+    /* background-color: #6A88B6; */
+}
+
+
+.container-blue{
+    background-color: var(--LIGHT-BLUE);
+}
+.container-white{
+    background-color: white;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    
+    border-bottom: solid #6A88B6;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+.navlist ul{
+    display: flex;
+    list-style: none;
+}
+.navlist{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.navlist li{
+    margin: 0 10px;
+}
+.navlist li a{
+    text-decoration: none;
+    color: var(--DARK);
+}
+
+
+.container-gray{
+    background-color: var(--GRAY);
+}
+
+.content-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+/* .sec-1{
+    background-color:var(--LIGHT-BLUE);
+} */
+
+.row{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.col-1{
+    width: calc(100%/1);
+}
+.col-2{
+    width: calc(100%/2);
+}
+
+.col-4{
+    width: calc(100%/4);
+    /* padding: 0 5px; */
+
+}
+
+
+.col-5{
+    width: calc(100%/5);
+    margin: 0 40px;
+}
+
+h1{
+    color: var(--DARK);
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 60px;
+}
+
+.slogan p{
+    color: var(--DARK);
+}
+
+.buttons{
+    margin-top: 1rem;
+}
+
+.started{
+    background-color: var(--ORANGE);
+    color: white;
+    border: none;
+    padding: 10px;
+}
+.help{
+    background-color: transparent;
+    color: var(--DARK);
+    border: solid ;
+    border-width: 1px;
+    padding: 10px 20px;
+}
+
+.image{
+    display: flex;
+    justify-content: end;
+}
+
+.header-image{
+    width: 500px;
+    height: 500px;
+}
+
+.exp{
+    width: calc(100%/8);
+    p{
+        align-items: center;
+    }
+}
+
+.brands{
+    margin: 0 auto;
+    max-width: 1200px;
+    justify-content: space-between;
+}
+
+.brand-images{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+}
+
+.facility{
+    max-width: 1200px;
+    padding: 5rem;
+    margin: 0 auto;
+}
+
+
+.faci-img{
+    height:450px;
+    width: 450px;
+    box-shadow: 0px 2px 10px black ;
+}
+
+
+h2{
+    font-family: var(--font);
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--DARK);
+}
+
+h3{
+    font-family: var(--font);
+    color: var(--DARK);
+    font-weight: 500;
+}
+
+.title h3{
+    color:var(--BLUE)
+}
+
+.desc p{
+    color: var(--TEXT-GRAY);
+}
+
+.service-heading h2{
+    text-align: center;
+}
+
+.servheading  {
+    display: flex;
+    flex-wrap: wrap;  
+}
+
+.servheading .title{
+    margin-left: 10px;
+}
+
+.serv-icon{
+    margin: auto 15px;
+}
+
+.serv-img{
+    background-color: white;
+    align-items: center;
+    border-radius: 50%;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+}
+
+
+
+.service-card{
+    background-color:white;
+    padding: 10px;
+}
+
+
+.morebtn{
+    background-color: transparent;
+    color: var(--DARK);
+    border: solid ;
+    border-width: 1px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.service-card:hover{
+    background-color: var(--DARK);
+    .box{
+        background-color: var(--BLUE);
+        h4{
+            color: var(--LIGHT-BLUE);
+        }
+        p{
+            color:var(--LIGHT-BLUE);
+        }
+        
+    }
+    .pricing h3,p{
+        color: var(--LIGHT-BLUE);
+    }
+    .more .morebtn{
+        background-color: var(--ORANGE);
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+    }   
+
+
+
+}
+
+.box{
+    background-color: var(--LIGHT-BLUE);
+    padding: 10px;
+}
+
+.service{
+    padding: 0 10px;
+}
+
+
+.serv-desc p{
+    font-size: small;
+    color: var(--TEXT-GRAY);
+}
+
+.pricing{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items:end;
+
+    p{
+        font-family: var(--font);
+        color: var(--DARK);
+    }
+}
+
+.more{
+    display: flex;
+    justify-content: center;
+}
+.maincontent{
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-between;
+}
+
+.tech{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px 0;
+}
+
+.techtab{
+    display: flex;
+    margin: 10px 2rem;
+    /* justify-content: center; */
+}
+
+.techtab:active{
+    background-color: var(--LIGHT-BLUE);
+}
+
+.techimg{
+    margin:auto 0;
+    margin-right: 15px;
+}
+
+.techadv{
+    display: flex;
+    
+}
+
+.adv{
+    margin: 0 10px;
+}
+
+.moree{
+    margin-top: 20px;
+}
+
+.testimonial-heading{
+    display: flex;
+    justify-content: space-between;
+}
+
+.testimonialheading{
+    width: 60%;
+}
+
+.sliderbutton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forward , .backward{
+    margin: 0 1rem;
+}
+
+.forward-btn{
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: var(--LIGHT-BLUE);
+    align-items: center;
+    border-radius: 50%;
+}
+.backward-btn{
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: var(--LIGHT-BLUE);
+    align-items: center;
+    border-radius: 50%;
+}
+
+.review-card{
+
+    background-color: var(--LIGHT-BLUE);
+    padding: 10px;
+}
+
+.reviewbox{
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+}
+
+.testimonialbox .row{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    .col-4{
+        min-width: 20%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contact{
+    display: flex;
+}
+
+.contactbtns{
+    display: flex;
+    justify-content: start;
+}
+
+.desc p{
+    color: var(--DARK);
+}
+
+.cont{
+    margin-top: 2rem;
+    margin-right: 1.5rem;
+}
+
+
+.footer{
+    background-color:var(--DARK);
+}
+
+.footcontent{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ftlogo+p{
+    color: var(--LIGHT-BLUE);
+}
+
+.ftservice{
+    display: flex;
+    justify-content: space-around;
+    .ftserv h4,p{
+        color: var(--LIGHT-BLUE);
+    }
+}
+
+.ftserv{
+    margin: 0 2rem;
+}
+

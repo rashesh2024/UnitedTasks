@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        tr:nth-child(even)>td:nth-child(even) {
+            background-color: rgb(163, 221, 255);
+        }
+
+        tr:nth-child(odd)>td:nth-child(odd) {
+            background-color: rgb(163, 221, 255);
+        }
+
+
+        tr:nth-child(odd)>td:nth-child(even) {
+            background-color: rgb(255, 166, 200);
+        }
+
+        tr:nth-child(even)>td:nth-child(odd) {
+            background-color: rgb(255, 166, 200);
+        }
+    </style>
+</head>
+
+<body>
+
+    <button type="button" id="addcol">Add Col</button>
+    <button type="button" id="removecol">Remove col</button><br>
+
+    <table border="1" cellpadding="30">
+        <tbody id="chess">
+            <tr id="1">
+                <td class="blue">Rashesh</td>
+                <td class="pink">Rashesh</td>
+            </tr>
+
+            <tr id="2">
+                <td class="pink">Rashesh</td>
+                <td class="blue">Rashesh</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="button" id="addrow">Add Row</button>
+    <button type="button" id="removerow">Remove Row</button>
+
+
+    <script>// addEventListener
+        document.getElementById("addcol").addEventListener("click", addCol);
+        document.getElementById("addrow").addEventListener("click", addRow);
+        document.getElementById("removecol").addEventListener("click", removeCol);
+        document.getElementById("removerow").addEventListener("click", removeRow);
+
+        var colCount = 2;
+        var rowCount = 2;
+
+        function addCol() {
+
+            document.querySelectorAll('tr').forEach(row => {
+                let column = document.createElement('td');
+                let text = document.createTextNode('Rashesh');
+                column.appendChild(text);
+                row.appendChild(column);
+            });
+            colCount++;
+        }
+
+        function removeCol() {
+            if (colCount > 2) {
+                let table = document.getElementById('Chess');
+                document.querySelectorAll('tr').forEach(row => {
+                    row.removeChild(row.lastElementChild);
+                });
+                colCount--;
+            }
+        }
+
+        function addRow() {
+
+            let table = document.getElementById("chess");
+            let len = table.rows[0].cells.length;
+            console.log(len);
+            let row = document.createElement("tr");
+
+            for (let i = 0; i < len; i++) {
+                let cell = document.createElement('td');
+                let text = document.createTextNode('Rashesh');
+                cell.appendChild(text);
+                row.appendChild(cell);
+            }
+            table.appendChild(row);
+            rowCount++;
+        }
+
+        function removeRow() {
+            if (rowCount > 2) {
+                let table = document.getElementById("chess");
+                let lrow = table.rows[table.rows.length - 1];
+                if (lrow) {
+                    table.deleteRow(table.rows.length - 1);
+                }
+                rowCount--;
+            }
+        }</script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				margin: 0;
+			}
+			#page {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+			section {
+				height: 100vh;
+				position: relative;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			section > div {
+				font-family: Helvetica, Sans-serif;
+				font-weight: bold;
+				font-size: 8vw;
+				color: #fff;
+				text-align: center;
+			}
+
+			.next {
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				margin-left: -36px;
+				cursor: pointer;
+				font-size: 400%;
+			}
+			.next:after {
+				content: "▼";
+			}
+
+			.one {
+				background-color: #45ccff;
+			}
+			.two {
+				background-color: #49e83e;
+			}
+			.three {
+				background-color: #edde05;
+			}
+			.four {
+				background-color: #e84b30;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="page">
+			<section class="one">
+				<div>Animated with CSS Transitions</div>
+				<div class="next"></div>
+			</section>
+			<section class="two">
+				<div>No JS Animation!</div>
+				<div class="next"></div>
+			</section>
+			<section class="three">
+				<div>Use Cubic Bezier!</div>
+				<div class="next"></div>
+			</section>
+			<section class="four">
+				<div>Or any Timing Function</div>
+				<div class="next"></div>
+			</section>
+			<section class="one">
+				<div>You've reached the end.</div>
+			</section>
+		</div>
+
+		<script>
+			var page = document.getElementById("page");
+			var sections = page.getElementsByTagName("section");
+			// This transition can be defined in the CSS if preferred.
+			var transition = "top .8s cubic-bezier(0.77, 0, 0.175, 1)";
+			page.style.transition = transition;
+			page.onclick = slideDown;
+
+			function slideDown(e) {
+				// Delegate.
+				if (e.target.className != "next") {
+					return;
+				}
+
+				// Prevent firing simultaneously.
+				page.onclick = "";
+				self = e.target.parentNode;
+				var offset = self.getBoundingClientRect();
+				var scroll = self.offsetTop;
+
+				// CSS Transition slide.
+				page.style.top = -offset.height - offset.top + "px";
+
+				setTimeout(function () {
+					// Reposition the real scrollbar.
+					page.style.transition = "none";
+					page.style.top = "";
+					window.scrollTo(0, offset.height + scroll);
+					page.style.transition = transition;
+					// Reattach event.
+					page.onclick = slideDown;
+
+					// This timeout length should match the CSS animation time (.8s).
+				}, 800);
+			}
+		</script>
+	</body>
+</html>
