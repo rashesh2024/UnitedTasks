@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../partials/head'); %>
+</head>
+
+<body>
+	<%- include('../partials/header'); %>
+
+		<main>
+			<div class="jumbotron">
+				<div class="container-lg">
+					<!-- <h1>Rashesh Here</h1> -->
+					<h1>Rashesh Here</h1>
+					<h1>Search Operations</h1>
+					<div class="Navigation">
+						<!-- Filter -->
+
+						<div class="filter-1">
+							<table border="1" cellpadding="5">
+								<form action="/filter" method="post">
+									<tr>
+										<td>
+											<!-- <label for="sid" class="form-lable">Student Id</label> -->
+											<input type="text" name="search" id="search" class="form-control"
+												placeholder="Search with _^}{:;} " <% var val=val || null %>
+											<% if (val) { %>
+												value = <%= val %>
+													<% } %>
+														tabindex="1"
+														/>
+										</td>
+										<td>
+											<input type="submit" value="Submit" class="btn-primary" tabindex="2" />
+										</td>
+									</tr>
+								</form>
+							</table>
+						</div>
+						<div class="guide">
+							<table border="1" cellpadding="5">
+								<tr>
+									<td>:</td>
+									<td>Firstname</td>
+								</tr>
+								<tr>
+									<td>^</td>
+									<td>Lastname</td>
+								</tr>
+								<tr>
+									<td>{</td>
+									<td>City</td>
+								</tr>
+								<tr>
+									<td>}</td>
+									<td>State</td>
+								</tr>
+								<tr>
+									<td>;</td>
+									<td>Department</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<h3>Expected Output</h3>
+					<div class="output"><%- include("../partials/grid") %></div>
+				</div>
+			</div>
+		</main>
+
+
+
+		<footer><%- include('../partials/footer'); %></footer>
+
+		<script>
+			// window.location = "?month=1";
+
+			// function onSelect() {
+			// 	window.location = "?type=" + document.getElementById("type").value;
+			// }
+
+			function toggle() {
+				var x = document.getElementById("filter-2");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else if (x.style.display === "block") {
+					x.style.display = "none";
+				}
+			}
+		</script>
+</body>
+
+</html>

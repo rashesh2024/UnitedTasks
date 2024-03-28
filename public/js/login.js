@@ -14,6 +14,7 @@ const validate = () => {
 
 async function loginUser() {
 	let status = validate();
+	let token;
 	let data = new URLSearchParams(new FormData(document.forms["login"]));
 
 	if (status) {
@@ -31,14 +32,19 @@ async function loginUser() {
 			})
 			.then((result) => {
 				status = result.status;
-				console.log(status);
+				token = result.token;
+				console.log(token);
 			});
 		if (!status) {
 			document.getElementById("err").style.display = "block";
 			document.getElementById("err").innerHTML =
 				"Your Email & Password do not match! Please try again!";
 		} else {
-			window.location = "http://127.0.0.1:5500/public/html/home.html";
+			alert("Welcome");
+			document.cookie = `token=${token}; expires=Thu, 31 Mar 2025 11:57:00 `;
+			if (document.cookie) {
+				window.location.href = "/public/html/home.html";
+			}
 		}
 	}
 	if (status == null) {

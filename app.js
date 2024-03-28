@@ -4,6 +4,8 @@ const registrationRoute = require("./Register_Backend/router/routes");
 const jobform = require("./Job_MVC/router/router");
 const studentRec = require("./studentRecords/router/routes");
 const attendResult = require("./Attendance_27Feb/routes/router");
+const dynamicData = require("./Dynamic Data/routes/router");
+const delemeterSearch = require("./Dynamic_Search/router/routes");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv").config();
@@ -19,6 +21,9 @@ app.use("/", route);
 app.use("/", jobform);
 app.use("/", studentRec);
 app.use("/", attendResult);
+app.use("/", dynamicData);
+app.use("/", delemeterSearch);
+app.use("/", registrationRoute);
 
 app.listen(process.env.PORT, () => {
 	console.log("http://127.0.0.1:8000");

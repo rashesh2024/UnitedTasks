@@ -1,6 +1,6 @@
 const express = require("express");
 const route = express.Router();
-const passport = require("passport");
+
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv").config();
 
@@ -45,11 +45,10 @@ route.post("/matchCreds", async (req, res) => {
 });
 
 route.post("/verifyEmail", async (req, res) => {
-	console.log("hello i am route!!"); // if (token) {
-	// 	let jwtSecretKey = process.env.JWT_SECRET_KEY;
-	// 	var verfiy = jwt.verify(token, jwtSecretKey);
-	// 	res.send("welcome to dashboard");
-	// }
+	let resp;
+	let email = req.body;
+	console.log("hello i am route!!", email);
+	resp = await verifyEmail(email);
 
 	console.log(resp);
 	res.json({ msg: resp });
@@ -63,15 +62,15 @@ route.post("/login", async (req, res) => {
 	let user = {
 		user: data.email,
 	};
-	const token = jwt.sign(user, jwtSecretKey);
+	const token = jwt.sign(user, jwtSecretKey, { expiresIn: "24h" });
 	console.log("Token", token);
 
 	let result = await loginUser(data);
-	res.json({ status: result, token: token });
-	// res
-	// 	.cookie("token", token, { httpOnly: true })
-	// 	.status(200)
-	// 	.json({ status: result, token: token });
+	// res.json({ status: result, token: token });
+	res
+		.cookie("token", token, { httpOnly: true })
+		.status(200)
+		.json({ status: result, token: token });
 });
 
 route.post("/profile", (req, res) => {

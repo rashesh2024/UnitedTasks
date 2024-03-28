@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../../partials/head'); %>
+</head>
+
+<body>
+
+	<main>
+		<div class="jumbotron">
+			<div class="container-lg">
+
+				<div class="insert">
+					<form action="/getinfo" method="post">
+						<h4>Write query wihtout ;</h4>
+						<label for="select" class="form-lable">Query : </label>
+
+						<input type="text" name="select" id="query" class="form-control" value="" />
+
+						<input type="submit" value="Submit" class="btn-primary" />
+					</form>
+					<!--  -->
+					<%- include('../../partials/grid'); %>
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer><%- include('../../partials/footer'); %></footer>
+</body>
+
+</html>

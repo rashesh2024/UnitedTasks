@@ -91,7 +91,7 @@ async function fetchData() {
 	var data = new URLSearchParams(new FormData(document.forms["Registration"]));
 	// var data = new FormData(document.forms["Registration"]);
 	let response;
-	await fetch("http://192.168.22.89:8080/register", {
+	await fetch("http://192.168.22.89:8000/register", {
 		method: "POST",
 		mode: "cors",
 		body: data,
@@ -129,7 +129,7 @@ const generateLink = async (uData) => {
 async function matchCredentials(userId, token) {
 	let userInfo = { user_id: userId, access_token: token };
 	// console.log(userInfo);
-	await fetch("http://192.168.22.89:8080/matchCreds", {
+	await fetch("http://192.168.22.89:8000/matchCreds", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(userInfo),
@@ -143,7 +143,8 @@ const validateEmail = async (email) => {
 
 	let emailObj = { email: email };
 	console.log(emailObj);
-	await fetch("http://192.168.22.89:8080/verifyEmail", {
+	await fetch("http://192.168.22.89:8000/verifyEmail", {
+		mode: "cors",
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(emailObj),

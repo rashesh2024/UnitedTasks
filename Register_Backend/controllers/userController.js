@@ -2,7 +2,7 @@ const { register, getUser, activeUser } = require("../models/userModel");
 const {
 	saltGenerator,
 	tokenGenerator,
-} = require("../public/javascript/stringGenerator");
+} = require("../../public/js/stringGenerator");
 const md5 = require("md5");
 
 const registerUser = async (data) => {
@@ -60,6 +60,7 @@ const verifyEmail = async (emailObj) => {
 	console.log(emailObj);
 	let sql = `select * from users`;
 	let users = await getUser(sql);
+
 	users.forEach((element) => {
 		if (element.user_name === emailObj.email) {
 			status = false;

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <h4>JavaScript Excersize</h4>
+        </li>
+        <li><a href="../../EventExe/chesspluss.html">Events</a></li>
+        <li><a href="../../KukuCube/Kuku Cube.html">Kuku Cube</a></li>
+        <li><a href="../../TicTacToe/tictac.html">TicTacToe</a></li>
+        <li><a href="../../DynamicTableExe/dynamicchess.html">DynamicTable</a></li>
+    </ul>
+
+    <ul>
+        <li>
+            <h4>Html Excersize</h4>
+        </li>
+        <li><a href="../../ehya/ehya.html">WebPage-1[ehya]</a></li>
+        <li><a href="../../Awan/index.html">WebPage-2[Awan]</a></li>
+        <li><a href="../../hirex/index.html">WebPage-3[HireX]</a></li>
+
+    </ul>
+
+    <ul>
+        <li>
+            <h4>Ajax & fetch API</h4>
+        </li>
+        <li><a href="../../Fetch_API/public/html/table.html">FetchAPI(Sanket sir)</a></li>
+        <li id="step-Form"><a href="" target="_blank">Ajax Crud</a></li>
+    </ul>
+
+    <ul>
+        <li>
+            <h4>Student Management</h4>
+        </li>
+        <li id="stddata"><a href="" target="_blank">All Studet(Pagination)</a></li>
+        <li id="attendance"><a href="" target="_blank">Attendance</a></li>
+        <li id="marksheet"><a href="" target="_blank">marksheet</a></li>
+    </ul>
+    <ul>
+        <li>
+            <h4>Dynamic Data Generation</h4>
+        </li>
+        <li id="simplequery"><a href="" target="_blank">Dynamic Data</a></li>
+        <li id="delemeter-search"><a href="" target="_blank">Delemeter Search</a></li>
+
+    </ul>
+
+    <script>
+        document.getElementById("step-Form").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/stepForm"
+        })
+        document.getElementById("stddata").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/data"
+        })
+        document.getElementById("attendance").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/uData"
+        })
+        document.getElementById("marksheet").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/result"
+        })
+        document.getElementById("simplequery").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/getinfo"
+        })
+        document.getElementById("delemeter-search").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/filter"
+        })
+    </script>
+
+</body>
+
+</html>
