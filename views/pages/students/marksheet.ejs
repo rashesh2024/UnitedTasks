@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../../partials/head'); %>
+</head>
+
+<body>
+
+
+	<main>
+		<div class="jumbotron">
+			<div class="container-lg">
+
+				<h3>Annual Marksheet</h3>
+
+				<h5 class="py-1">Student Name : <%= terminal[0].fullname %>
+				</h5>
+				<h5 class="py-1">Student ID : <%= terminal[0].std_id %>
+				</h5>
+
+				<div class="result-details">
+					<table border="1" cellpadding="5" class="result">
+						<tr>
+							<td rowspan="2">Subject</td>
+							<td colspan="2" class="exam">Terminal</td>
+							<td colspan="2" class="exam">Prelims</td>
+							<td colspan="2" class="exam">Final</td>
+							<td rowspan="2">Total Marks</td>
+						</tr>
+						<tr>
+							<td>Theory</td>
+							<td>Practical</td>
+							<td>Theory</td>
+							<td>Practical</td>
+							<td>Theory</td>
+							<td>Practical</td>
+						</tr>
+
+						<% for(let i=0; i < terminal.length; i++) { %>
+							<tr>
+								<td>
+									<%= terminal[i].sub_name %>
+								</td>
+								<td>
+									<%= terminal[i].Theory %>
+								</td>
+								<td>
+									<%= terminal[i].Practical %>
+								</td>
+								<td>
+									<%= prelims[i].Theory %>
+								</td>
+								<td>
+									<%= prelims[i].Practical %>
+								</td>
+								<td>
+									<%= final[i].Theory %>
+								</td>
+								<td>
+									<%= final[i].Practical %>
+								</td>
+								<td>
+									<%= final[i].total %>
+								</td>
+							</tr>
+							<% } %>
+
+								<tr>
+									<td>Percentage</td>
+									<td>
+										<%= final[0].percentage %>
+									</td>
+									<td colspan="4"></td>
+									<td colspan="">Grand Total</td>
+									<td colspan="">
+										<%= final[0].grandTotal %> / 1200
+									</td>
+								</tr>
+								<tr>
+									<td colspan="">Total Attendance</td>
+									<td colspan="">
+										<%= attendance[0].days %>
+									</td>
+								</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer><%- include('../../partials/footer'); %></footer>
+</body>
+
+</html>

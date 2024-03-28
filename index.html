@@ -41,9 +41,8 @@
             <h4>Student Management</h4>
         </li>
         <li id="stddata"><a href="" target="_blank">All Studet(Pagination)</a></li>
-        <li><a href="./Awan/index.html">Attendance</a></li>
-        <li><a href="./hirex/index.html">Marksheet</a></li>
-
+        <li id="attendance"><a href="" target="_blank">Attendance</a></li>
+        <li id="marksheet"><a href="" target="_blank">marksheet</a></li>
     </ul>
 
     <script>
@@ -52,6 +51,12 @@
         })
         document.getElementById("stddata").addEventListener("click", function () {
             window.location.href = "http://127.0.0.1:8000/data"
+        })
+        document.getElementById("attendance").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/uData"
+        })
+        document.getElementById("marksheet").addEventListener("click", function () {
+            window.location.href = "http://127.0.0.1:8000/result"
         })
     </script>
 

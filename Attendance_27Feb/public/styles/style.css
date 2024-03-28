@@ -1,0 +1,16 @@
+h3,h4{
+    text-align: center;
+}
+.result{
+    width: 100%;
+
+}
+
+.exam{
+    text-align: center;
+}
+
+#errImg{
+    display: flex;
+    margin: auto;
+}

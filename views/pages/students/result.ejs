@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../../partials/head'); %>
+</head>
+
+<body>
+
+
+	<main>
+		<div class="jumbotron">
+			<div class="container-lg">
+
+				<h3>Exam Result</h3>
+
+				<div class="result-details">
+					<table border="1" cellpadding="5" class="result">
+						<tr>
+							<td rowspan="2">Studetnt ID</td>
+							<td rowspan="2">Studetnt Full Name</td>
+							<td colspan="2" class="exam">Terminal</td>
+							<td colspan="2" class="exam">Prelims</td>
+							<td colspan="2" class="exam">Final</td>
+							<td rowspan="2">Total Marks</td>
+							<td rowspan="2">Generate Marksheet</td>
+						</tr>
+						<tr>
+							<td>Theory</td>
+							<td>Practical</td>
+							<td>Theory</td>
+							<td>Practical</td>
+							<td>Theory</td>
+							<td>Practical</td>
+						</tr>
+
+						<% for(let i=0; i < Terminal.length; i++) { %>
+							<tr>
+								<td>
+									<%= Terminal[i].std_id %>
+								</td>
+								<td>
+									<%= Terminal[i].Fullname %>
+								</td>
+								<td>
+									<%= Terminal[i].Theory %>
+								</td>
+								<td>
+									<%= Terminal[i].Practicle %>
+								</td>
+								<td>
+									<%= Prelims[i].Theory %>
+								</td>
+								<td>
+									<%= Prelims[i].Practicle %>
+								</td>
+								<td>
+									<%= Final[i].Theory %>
+								</td>
+								<td>
+									<%= Final[i].Practicle %>
+								</td>
+								<td>
+									<%= Terminal[i].total %>
+								</td>
+								<td>
+									<a href="/marksheet?stdid=<%=Terminal[i].std_id%>">Generate</a>
+								</td>
+							</tr>
+							<% } %>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer><%- include('../../partials/footer'); %></footer>
+</body>
+
+</html>
