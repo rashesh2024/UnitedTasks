@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<h1>Hello Rashesh</h1>
+
+		<%- include('../partials/header'); %>
+
+		<main>
+			<div class="jumbotron">
+				<h1>This is great</h1>
+				<p>Welcome to templating using EJS</p>
+
+				<h2>Variable Testing</h2>
+				<p><%= tagline %></p>
+
+				<ul>
+					<% players.forEach(function(player) { %>
+					<li>
+						<%= player.name %>, <%= player.game %>, <%= player.birth_year %>
+					</li>
+					<% }); %>
+					<!-- <% players.forEach(function(player) { %> -->
+					<!-- <li>
+						<strong><%= player.name %></strong>
+						representing <%= player.game %>, born <%= player.birth_year %>
+					</li>
+					<% }); %> -->
+				</ul>
+			</div>
+		</main>
+
+		<footer><%- include('../partials/footer'); %></footer>
+
+		<!-- <form action="/" method="get">
+			<input type="submit" value="submit" name="submit" />
+		</form> -->
+	</body>
+</html>

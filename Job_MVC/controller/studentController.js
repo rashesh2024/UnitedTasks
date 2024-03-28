@@ -30,7 +30,6 @@ const getData = async (conn, eid) => {
 
 const getStates = async (conn) => {
 	let sql = "select * from states";
-	console.log(conn);
 	let states = await conn.query(sql);
 
 	return states[0];

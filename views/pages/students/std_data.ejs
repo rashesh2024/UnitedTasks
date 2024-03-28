@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../../partials/head'); %>
+		<link rel="stylesheet" href="../../public/styles/style.css" />
+</head>
+
+<body>
+	<h1>Hello Rashesh</h1>
+	<%- include('../../partials/header'); %>
+
+		<main>
+			<div class="jumbotron">
+				<h1>This is great</h1>
+				<p>Welcome to templating using EJS</p>
+
+				<%- include('../../partials/pagination'); %>
+
+					<table border="1" cellspacing="0" cellpadding="">
+						<tr>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=1">Student Id</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=2">First Name</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=3">Last Name</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=4">Email</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=5">Department</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=6">City</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=7">City</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=8">Zip Code</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=9">Country</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=10">Date of Birth</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=11">Blood Group</a>
+							</th>
+							<th>
+								<a href="/data?page=<%= currentPage %>&sortBy=12">Created At</a>
+							</th>
+						</tr>
+
+						<% for(var i=0; i < fdata.length; i++ ) { %>
+							<tr>
+								<td>
+									<%= fdata[i].std_id %>
+								</td>
+								<td>
+									<%= fdata[i].firstname %>
+								</td>
+								<td>
+									<%= fdata[i].lastname %>
+								</td>
+								<td>
+									<%= fdata[i].email %>
+								</td>
+								<td>
+									<%= fdata[i].department %>
+								</td>
+								<td>
+									<%= fdata[i].city %>
+								</td>
+								<td>
+									<%= fdata[i].state %>
+								</td>
+								<td>
+									<%= fdata[i].ZipCode %>
+								</td>
+								<td>
+									<%= fdata[i].country %>
+								</td>
+								<td>
+									<%= fdata[i].dob %>
+								</td>
+								<td>
+									<%= fdata[i].bloodgroup %>
+								</td>
+								<td>
+									<%= fdata[i].created_at %>
+								</td>
+							</tr>
+
+							<% } %>
+					</table>
+			</div>
+		</main>
+
+		<footer><%- include('../../partials/footer'); %></footer>
+
+		<script>
+			var page = 1;
+
+			function increase() {
+				document.getElementById("page").innerHTML = page;
+
+				if (page == 250) {
+					let next = document.getElementById("next");
+					first.setAttribute("class", "page-item disable");
+
+					let last = document.getElementById("last");
+					first.setAttribute("class", "page-item disable");
+				}
+				page++;
+				console.log(page);
+			}
+			function decrease() {
+				document.getElementById("page").innerHTML = page;
+
+				if (page == 1) {
+					let prev = document.getElementById("prev");
+					first.setAttribute("class", "page-item disable");
+
+					let first = document.getElementById("first");
+					first.setAttribute("class", "page-item disable");
+				}
+				page--;
+				console.log(page);
+			}
+
+			function last(params) {
+				page = 250;
+				document.getElementById("page").innerHTML = page;
+				if (page == 250) {
+					let next = document.getElementById("next");
+					first.setAttribute("class", "page-item disable");
+
+					let last = document.getElementById("last");
+					first.setAttribute("class", "page-item disable");
+				}
+			}
+
+			function first(params) {
+				page = 1;
+				document.getElementById("page").innerHTML = page;
+				if (page == 1) {
+					let prev = document.getElementById("prev");
+					first.setAttribute("class", "page-item disable");
+					let first = document.getElementById("first");
+					first.setAttribute("class", "page-item disable");
+				}
+			}
+		</script>
+</body>
+
+</html>

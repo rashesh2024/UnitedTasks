@@ -1,0 +1,15 @@
+<div class="pagination">
+	<% if(currentPage> 1) { %>
+		<a href="/data/?page=1" class="first">
+			<< </a>
+				<a href="/data/?page=<%= currentPage-1 %>" class="prev">&nbsp; < &nbsp;</a>
+						<% } %>
+							<p id="page">
+								<%= currentPage %>
+							</p>
+							<% if(currentPage*20 < length) { %>
+								<a href="/data/?page=<%= ++currentPage %>" class="next">&nbsp; > &nbsp;</a>
+								<a href="/data/?page=<%=length/20%>" class="last">>></a>
+
+								<% } %>
+</div>
