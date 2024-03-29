@@ -91,7 +91,7 @@ async function fetchData() {
 	var data = new URLSearchParams(new FormData(document.forms["Registration"]));
 	// var data = new FormData(document.forms["Registration"]);
 	let response;
-	await fetch("http://192.168.22.89:8000/register", {
+	await fetch("http://127.0.0.1:8000/register", {
 		method: "POST",
 		mode: "cors",
 		body: data,
@@ -113,10 +113,7 @@ async function fetchData() {
 const generateLink = async (uData) => {
 	let link = document.getElementById("link");
 	link.innerHTML = `Click Here`;
-	link.setAttribute(
-		"href",
-		"http://192.168.22.89:5500/public/html/verified.html"
-	);
+	link.setAttribute("href", "http://127.0.0.1:5500/public/html/verified.html");
 
 	link.setAttribute(
 		"onclick",
@@ -129,7 +126,7 @@ const generateLink = async (uData) => {
 async function matchCredentials(userId, token) {
 	let userInfo = { user_id: userId, access_token: token };
 	// console.log(userInfo);
-	await fetch("http://192.168.22.89:8000/matchCreds", {
+	await fetch("http://127.0.0.1:8000/matchCreds", {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(userInfo),
@@ -143,7 +140,7 @@ const validateEmail = async (email) => {
 
 	let emailObj = { email: email };
 	console.log(emailObj);
-	await fetch("http://192.168.22.89:8000/verifyEmail", {
+	await fetch("http://127.0.0.1:8000/verifyEmail", {
 		mode: "cors",
 		method: "POST",
 		headers: { "Content-Type": "application/json" },

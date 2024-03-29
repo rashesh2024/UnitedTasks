@@ -19,7 +19,7 @@ async function loginUser() {
 
 	if (status) {
 		console.log("object");
-		await fetch("http://192.168.22.89:8000/login", {
+		await fetch("http://127.0.0.1:8000/login", {
 			method: "POST",
 			mode: "cors",
 			body: data,
