@@ -5,74 +5,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../public/stylesheet/style.css">
 </head>
 
 <body>
-    <ul>
-        <li>
-            <h4>JavaScript Excersize</h4>
-        </li>
-        <li><a href="../../EventExe/chesspluss.html">Events</a></li>
-        <li><a href="../../KukuCube/Kuku Cube.html">Kuku Cube</a></li>
-        <li><a href="../../TicTacToe/tictac.html">TicTacToe</a></li>
-        <li><a href="../../DynamicTableExe/dynamicchess.html">DynamicTable</a></li>
-    </ul>
 
-    <ul>
-        <li>
-            <h4>Html Excersize</h4>
-        </li>
-        <li><a href="../../ehya/ehya.html">WebPage-1[ehya]</a></li>
-        <li><a href="../../Awan/index.html">WebPage-2[Awan]</a></li>
-        <li><a href="../../hirex/index.html">WebPage-3[HireX]</a></li>
+    <div class="container">
+        <h1>Rashesh Pithadiya</h1>
+        <div class="jsex">
+            <h2>JavaScript Excersize</h2>
+            <div class="row">
+                <div class="col-4">
+                    <div class="box">
+                        <a href="../../EventExe/chesspluss.html"><img
+                                src="../images/Screenshot from 2024-03-29 09-55-41.png" alt="" class="img"></a>
+                        <p>Events</p>
+                    </div>
+                    <div class="box">
+                        <a href="../../KukuCube/Kuku Cube.html"><img src="../images/kuku.png" alt="" class="img"></a>
+                        <p>Kuku Cube</p>
+                    </div>
+                </div>
+            </div>
 
-    </ul>
+            <div class="row">
 
-    <ul>
-        <li>
-            <h4>Ajax & fetch API</h4>
-        </li>
-        <li><a href="../../Fetch_API/public/html/table.html">FetchAPI(Sanket sir)</a></li>
-        <li id="step-Form"><a href="" target="_blank">Ajax Crud</a></li>
-    </ul>
+                <div class="col-2">
+                    <div class="box">
+                        <a href="../../TicTacToe/tictac.html"><img src="../images/tictac.png" alt="" class="img"></a>
+                        <p>Tic Tav Toe</p>
+                    </div>
 
-    <ul>
-        <li>
-            <h4>Student Management</h4>
-        </li>
-        <li id="stddata"><a href="" target="_blank">All Studet(Pagination)</a></li>
-        <li id="attendance"><a href="" target="_blank">Attendance</a></li>
-        <li id="marksheet"><a href="" target="_blank">marksheet</a></li>
-    </ul>
-    <ul>
-        <li>
-            <h4>Dynamic Data Generation</h4>
-        </li>
-        <li id="simplequery"><a href="" target="_blank">Dynamic Data</a></li>
-        <li id="delemeter-search"><a href="" target="_blank">Delemeter Search</a></li>
+                    <div class="box">
+                        <a href="../../DynamicTableExe/dynamicchess.html"><img src="../images/dynamictable.png"
+                                class="img" alt=""></a>
+                        <p>Dynamic Table</p>
+                    </div>
+                </div>
+            </div>
 
-    </ul>
 
-    <script>
-        document.getElementById("step-Form").addEventListener("click", function () {
-            window.location.href = "http://127.0.0.1:8000/stepForm"
-        })
-        document.getElementById("stddata").addEventListener("click", function () {
-            window.location.href = "http://127.0.0.1:8000/data"
-        })
-        document.getElementById("attendance").addEventListener("click", function () {
-            window.location.href = "http://127.0.0.1:8000/uData"
-        })
-        document.getElementById("marksheet").addEventListener("click", function () {
-            window.location.href = "http://127.0.0.1:8000/result"
-        })
-        document.getElementById("simplequery").addEventListener("click", function () {
-            window.location.href = "http://127.0.0.1:8000/getinfo"
-        })
-        document.getElementById("delemeter-search").addEventListener("click", function () {
-            window.location.href = "http://127.0.0.1:8000/filter"
-        })
-    </script>
+        </div>
+
+        <div class="htmlex">
+
+            <h2>Html Excersize</h2>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="box">
+                        <a href="../../ehya/ehya.html"><img src="../images/ehya.png" class="img" alt=""></a>
+                        <p>Ehya Webpage</p>
+                    </div>
+                    <div class="box">
+                        <a href="../../Awan/index.html"><img src="../images/awan.png" class="img" alt=""></a>
+                        <p>Awan Webpage</p>
+                    </div>
+                    <div class="box">
+                        <a href="../../hirex/index.html"><img src="../images/hirex.png" class="img" alt=""></a>
+                        <p>HireX Webpage</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ajax">
+
+                <h2>Ajax & fetch API</h2>
+
+                <div class="row">
+                    <div class="col-2">
+                        <div class="box">
+                            <a href="../../Fetch_API/public/html/table.html"><img src="../images/fetch.png" class="img"
+                                    alt=""></a>
+                            <p>Fetch API (Sanket Sir)</p>
+                        </div>
+                        <div class="box">
+                            <a href="" target="_blank"><img src="../images/stepform.png" class="img" alt=""
+                                    id="step-Form"></a>
+                            <p>Ajax Crud</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="stdmanage">
+
+                <h2>Student Management</h2>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="box">
+                            <a href="" target="_blank"><img src="../images/pagination.png" class="img" alt=""
+                                    id="stddata"></a>
+                            <p>Student Record (Pagination)</p>
+                        </div>
+                        <div class="box">
+                            <a href="" target="_blank"><img src="../images/attendance.png" class="img" alt=""
+                                    id="attendance"></a>
+                            <p>Attendance Filtering</p>
+                        </div>
+                        <div class="box">
+                            <a href="" target="_blank"><img src="../images/marksheet.png" class="img" alt=""
+                                    id="marksheet"></a>
+                            <p>Marksheet Generation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dynamicdatagen">
+                <h2>Dynamic Data Generation</h2>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="box">
+                            <a href="" target="_blank"><img src="../images/dynamicData.png" class="img" alt=""
+                                    id="simplequery"></a>
+                            <p>Dynamic Data</p>
+                        </div>
+                        <div class="box">
+                            <a href="" target="_blank"><img src="../images/delemeter.png" class="img" alt=""
+                                    id="delemeter-search"></a>
+                            <p>Delemeter Search</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <script>
+            document.getElementById("step-Form").addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:8000/stepForm"
+            })
+            document.getElementById("stddata").addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:8000/data"
+            })
+            document.getElementById("attendance").addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:8000/uData"
+            })
+            document.getElementById("marksheet").addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:8000/result"
+            })
+            document.getElementById("simplequery").addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:8000/getinfo"
+            })
+            document.getElementById("delemeter-search").addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:8000/filter"
+            })
+        </script>
 
 </body>
 

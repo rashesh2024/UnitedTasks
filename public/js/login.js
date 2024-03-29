@@ -19,7 +19,7 @@ async function loginUser() {
 
 	if (status) {
 		console.log("object");
-		await fetch("http://192.168.22.89:8080/login", {
+		await fetch("http://192.168.22.89:8000/login", {
 			method: "POST",
 			mode: "cors",
 			body: data,
@@ -43,7 +43,7 @@ async function loginUser() {
 			alert("Welcome");
 			document.cookie = `token=${token}; expires=Thu, 31 Mar 2025 11:57:00 `;
 			if (document.cookie) {
-				window.location.href = "/public/html/home.html";
+				window.location.href = "http://127.0.0.1:5500/public/html/home.html";
 			}
 		}
 	}
