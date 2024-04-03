@@ -20,7 +20,7 @@ app.use(cors());
 app.use("/", route);
 app.use("/", jobform);
 app.use("/", studentRec);
-app.use("/", attendResult);
+// app.use("/", attendResult);
 app.use("/", dynamicData);
 app.use("/", delemeterSearch);
 // app.use("/", registrationRoute);

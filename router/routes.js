@@ -11,7 +11,14 @@ const {
 	login,
 	chekcLogin,
 } = require("../controllers/userController");
+
 const { insertEmploye } = require("../controllers/employeController");
+
+const {
+	getStudentData,
+	getStudentResult,
+	getStudentMarksheet,
+} = require("../controllers/attendanceController");
 
 route.use(cookieParser());
 
@@ -27,5 +34,11 @@ route.post("/profile", chekcLogin);
 //Job Application routes
 
 route.post("/insertData", insertEmploye);
+
+// Attendance Routes
+
+route.get("/uData", getStudentData);
+route.get("/result", getStudentResult);
+route.get("/marksheet", getStudentMarksheet);
 
 module.exports = route;
