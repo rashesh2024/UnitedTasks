@@ -467,7 +467,7 @@ async function submitForm(params) {
 		if (id) {
 			alert("Updated");
 			const resp = await fetch(
-				"/data?" +
+				"/insertData?" +
 					new URLSearchParams({
 						id: id,
 					}).toString(),
@@ -481,7 +481,7 @@ async function submitForm(params) {
 			console.log(resp);
 		} else {
 			alert("Submitted");
-			const resp = await fetch("/data", {
+			const resp = await fetch("/insertData", {
 				method: "POST",
 				body: new URLSearchParams(
 					new FormData(document.forms["Job Application Form"])

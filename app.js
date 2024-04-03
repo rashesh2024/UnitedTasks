@@ -23,7 +23,7 @@ app.use("/", studentRec);
 app.use("/", attendResult);
 app.use("/", dynamicData);
 app.use("/", delemeterSearch);
-app.use("/", registrationRoute);
+// app.use("/", registrationRoute);
 
 app.listen(process.env.PORT, () => {
 	console.log("http://127.0.0.1:8000");

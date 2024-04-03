@@ -1,104 +1,47 @@
-const app = require("express");
-const route = app.Router();
-const bodyParser = require("body-parser");
-const connection = require("../config/dbconnect");
-var {
-	dispData,
-	getData,
-	getStates,
-	getCities,
-} = require("../controller/studentController");
+const { employeConnection } = require("../.config/dbConnect");
 
-// app.set("view engine", "ejs");
+const {
+	displayDataEmploye,
+	insertEmployeData,
+} = require("../models/employeModel");
 
-route.get("/", async (req, res) => {
+async function dispData() {
+	return await displayDataEmploye();
+}
+
+const insertData = async (basicDetails, preference) => {
+	// console.log("Cobntroller:", data);
+	return await insertEmployeData(basicDetails, preference);
+};
+
+const getData = async (eid) => {
 	try {
-		res.render("pages/home", { data: {} });
+		let resultLang = await employeConnection.query(
+			`select * from language where emp_id = ${eid}`
+		);
+		let resultBasic = await employeConnection.query(
+			`SELECT *, preference.pref_location,preference.Department,preference.Expected_ctc,preference.Expected_ctc,preference.Notice_period FROM job_app_db_29.employe_master, job_app_db_29.preference where employe_master.emp_id = preference.emp_id and employe_master.emp_id = ${eid}`
+		);
+		return { resultBasic, resultLang };
 	} catch (error) {
-		res.send(error);
+		console.log("Kuch to Gadbad Hai daya", error);
 	}
-});
+};
 
-route.get("/stepForm", (req, res) => {
-	try {
-		res.render("pages/jobajax/index", { data: {} });
-	} catch (error) {
-		res.send(error);
-	}
-});
+const getStates = async () => {
+	let sql = "select * from states";
+	let states = await employeConnection.query(sql);
 
-route.get("/form", (req, res) => {
-	res.render("pages/job_form");
-});
+	return states[0];
+};
+const getCities = async (id) => {
+	let sql = `select * from cities where state_id = ${id}`;
+	let cities = await employeConnection.query(sql);
 
-route.get("/state", async (req, res) => {
-	let conn = await connection();
-	let states = await getStates(conn);
-	res.json(states);
-});
-route.get("/city", async (req, res) => {
-	let stateId = req.query.id;
-	let conn = await connection();
-	let cities = await getCities(conn, stateId);
-	res.json(cities);
-	// res.end();
-});
+	return cities[0];
+};
 
-route.get("/getData", async (req, res) => {
-	let result = {};
-	let lang = {};
-
-	if (req.query.id) {
-		let emp_id = req.query.id;
-		console.log(emp_id);
-		let conn = await connection();
-		let data = await getData(conn, emp_id);
-		result.Basic = data.resultBasic[0][0];
-
-		let hindi = data.resultLang[0][0];
-		let english = data.resultLang[0][1];
-		let gujarati = data.resultLang[0][2];
-		lang.Hindi = hindi;
-		lang.English = english;
-		lang.Gujarati = gujarati;
-		result.Lang = lang;
-		result.Basic.dob = result.Basic.dob.toISOString().slice(0, 10);
-		console.log(result);
-		res.render("pages/job_form", {
-			eid: req.query.id,
-			data: result,
-		});
-	} else {
-		res.render("pages/job_form", { data: {} });
-	}
-});
-
-route.get("/urlGet", async (req, res) => {
-	let result = {};
-	let lang = {};
-
-	if (req.query.id) {
-		let emp_id = req.query.id;
-		console.log(emp_id);
-		let conn = await connection();
-		let data = await getData(conn, emp_id);
-		result.Basic = data.resultBasic[0][0];
-
-		let hindi = data.resultLang[0][0];
-		let english = data.resultLang[0][1];
-		let gujarati = data.resultLang[0][2];
-		lang.Hindi = hindi;
-		lang.English = english;
-		lang.Gujarati = gujarati;
-		result.Lang = lang;
-		result.Basic.dob = result.Basic.dob.toISOString().slice(0, 10);
-		console.log(result);
-		res.json(result);
-	}
-});
-
-route.post("/insertData", async (req, res) => {
-	let conn = await connection();
+const insertEmploye = async (req, res) => {
 	let data = req.body;
 
 	let request = req.query;
@@ -149,10 +92,10 @@ route.post("/insertData", async (req, res) => {
 
 			let deleteLang = `DELETE FROM language where emp_id = ${emp_id}`;
 
-			await conn.query(updateBasic);
-			await conn.query(updatePref);
-			await conn.query(deleteLang);
-			await conn.query(insertLang);
+			await employeConnection.query(updateBasic);
+			await employeConnection.query(updatePref);
+			await employeConnection.query(deleteLang);
+			await employeConnection.query(insertLang);
 
 			res.send("Data Updated SuccessFully !!");
 		} catch (error) {
@@ -189,7 +132,7 @@ route.post("/insertData", async (req, res) => {
 			"insert into preference (emp_id,pref_location,Department,Expected_ctc,Current_ctc,Notice_period) values (?)";
 		if (data) {
 			try {
-				let result = await conn.query(insertBasic2, [Basic]);
+				let result = await employeConnection.query(insertBasic2, [Basic]);
 				eid = result[0].insertId;
 				console.log("Result:", eid);
 			} catch (error) {
@@ -263,17 +206,25 @@ route.post("/insertData", async (req, res) => {
 				});
 				insertLang = insertLang.substring(0, insertLang.length - 1);
 				console.log(edu, ref, pref, work, tech);
-				await conn.query(insertEduc, [edu]);
-				await conn.query(insertWork, [work]);
-				await conn.query(insertLang);
-				await conn.query(insertTech, [tech]);
-				await conn.query(insertRefe, [ref]);
-				await conn.query(insertPref, [pref]);
+				await employeConnection.query(insertEduc, [edu]);
+				await employeConnection.query(insertWork, [work]);
+				await employeConnection.query(insertLang);
+				await employeConnection.query(insertTech, [tech]);
+				await employeConnection.query(insertRefe, [ref]);
+				await employeConnection.query(insertPref, [pref]);
 			} catch (error) {
 				console.log(error);
 			}
 			res.send("Ayo");
 		}
 	}
-});
-module.exports = route;
+};
+
+module.exports = {
+	dispData,
+	insertData,
+	getData,
+	getStates,
+	getCities,
+	insertEmploye,
+};
