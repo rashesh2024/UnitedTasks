@@ -1,16 +1,18 @@
 <div class='pagination'>
-	<% if(page> 1) { %>
-		<a href='<%= currPage %>?page=1&query=<%=query%>' class='first'>
-			<< </a>
-				<a href='<%= currPage %>?page=<%= page-1 %>&query=<%=query%>' class='prev'>&nbsp; < &nbsp;</a>
-						<% } %>
-							<p id='page'>
-								<%= page %>
-							</p>
-							<% if(page*20 < len) { %>
-								<a href='<%= currPage %>?page=<%= ++page %>&query=<%=query%>' class='next'>&nbsp; >
-									&nbsp;</a>
-								<a href='<%= currPage %>page=<%=len/20%>&query=<%=query%>' class='last'>>></a>
+  <% if(page> 1) { %>
+  <a href='<%= currPage %>?page=1&query=<%=query%>' class='first'>
+    << </a>
+      <a href='<%= currPage %>?page=<%= page-1 %>&query=<%=query%>' class='prev'>&nbsp;
 
-								<% } %>
+        < &nbsp;</a>
+          <% } %>
+          <p id='page'>
+            <%= page %>
+          </p>
+          <% if(page*20 < len) { %>
+          <a href='<%= currPage %>?page=<%= ++page %>&query=<%=query%>' class='next'>&nbsp; >
+            &nbsp;</a>
+          <a href='<%= currPage %>?page=<%=len/20%>&query=<%=query%>' class='last'>>></a>
+
+          <% } %>
 </div>

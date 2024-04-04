@@ -1,7 +1,6 @@
 const express = require("express");
 const route = require("./router/routes");
 const jobform = require("./Job_MVC/router/router");
-const delemeterSearch = require("./Dynamic_Search/router/routes");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv").config();
@@ -15,8 +14,6 @@ app.use(express.static("public"));
 app.use(cors());
 app.use("/", route);
 app.use("/", jobform);
-app.use("/", delemeterSearch);
-// app.use("/", registrationRoute);
 
 app.listen(process.env.PORT, () => {
 	console.log("http://127.0.0.1:8000");

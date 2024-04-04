@@ -27,6 +27,8 @@ const {
 	getGetInfo,
 } = require("../controllers/dynamicDataController");
 
+const { filterGet, filterPost } = require("../controllers/delimeterController");
+
 route.use(cookieParser());
 
 route.get("/", (req, res) => {
@@ -53,5 +55,10 @@ route.get("/studentData", studentData);
 //dynamic records
 route.post("/getinfo", postGetInfo);
 route.get("/getinfo", getGetInfo);
+
+//Delimeter search
+
+route.get("/filter", filterGet);
+route.post("/filter", filterPost);
 
 module.exports = route;

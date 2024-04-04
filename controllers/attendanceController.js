@@ -10,6 +10,7 @@ var finalData = [];
 const getStudentData = (req, res) => {
 	//SQl query to retrive the attendance record
 	let page = req.query.page || 1;
+	let currentPage = "/uData";
 
 	if (req.query.month) {
 		month = req.query.month;
@@ -50,8 +51,10 @@ const getStudentData = (req, res) => {
 		res.render("pages/students/user_data", {
 			data: myData,
 			month: month,
-			length: len,
-			currentPage: page,
+			len: len,
+			page: page,
+			currPage: currentPage,
+			query: "",
 		});
 	});
 };
