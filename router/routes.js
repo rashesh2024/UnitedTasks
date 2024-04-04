@@ -20,6 +20,13 @@ const {
 	getStudentMarksheet,
 } = require("../controllers/attendanceController");
 
+const studentData = require("../controllers/studentController");
+
+const {
+	postGetInfo,
+	getGetInfo,
+} = require("../controllers/dynamicDataController");
+
 route.use(cookieParser());
 
 route.get("/", (req, res) => {
@@ -36,9 +43,15 @@ route.post("/profile", chekcLogin);
 route.post("/insertData", insertEmploye);
 
 // Attendance Routes
-
 route.get("/uData", getStudentData);
 route.get("/result", getStudentResult);
 route.get("/marksheet", getStudentMarksheet);
+
+// student records
+route.get("/studentData", studentData);
+
+//dynamic records
+route.post("/getinfo", postGetInfo);
+route.get("/getinfo", getGetInfo);
 
 module.exports = route;

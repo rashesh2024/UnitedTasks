@@ -9,15 +9,12 @@ var finalData = [];
 
 const getStudentData = (req, res) => {
 	//SQl query to retrive the attendance record
-
 	let page = req.query.page || 1;
 
 	if (req.query.month) {
 		month = req.query.month;
 	}
-
 	let sqllen = "SELECT count(*) as length from student_master;";
-
 	//? Execution
 	student2Connection.query(sqllen, function (err, result) {
 		len = result[0].length;
@@ -123,19 +120,15 @@ const getStudentMarksheet = (req, res) => {
 		";";
 
 	student2Connection.query(sql1, function (err, result1) {
-		//
 		if (err) throw err;
-		//
+
 		student2Connection.query(sql2, function (err, result2) {
-			//
 			if (err) throw err;
-			//
+
 			student2Connection.query(sql3, function (err, result3) {
-				//
 				if (err) throw err;
 
 				student2Connection.query(sql4, function (err, attendance) {
-					//
 					if (err) throw err;
 
 					for (let i = 0; i < result3.length; i++) {
