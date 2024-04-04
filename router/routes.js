@@ -12,7 +12,14 @@ const {
 	chekcLogin,
 } = require("../controllers/userController");
 
-const { insertEmploye } = require("../controllers/employeController");
+const {
+	getData,
+	searchEmp,
+	getStates,
+	getCities,
+	insertEmploye,
+	getForm,
+} = require("../controllers/employeController");
 
 const {
 	getStudentData,
@@ -41,7 +48,11 @@ route.post("/login", login);
 route.post("/profile", chekcLogin);
 
 //Job Application routes
-
+route.get("/stepForm", getForm);
+route.get("/state", getStates);
+route.get("/city", getCities);
+route.get("/getData", getData);
+route.get("/urlGet", searchEmp);
 route.post("/insertData", insertEmploye);
 
 // Attendance Routes

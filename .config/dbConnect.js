@@ -29,9 +29,9 @@ const employeConnection = async () => {
 	try {
 		conn = await mysql2.createConnection({
 			host: process.env.HOST,
-			database: process.env.DATABASE,
+			database: process.env.EMPLOYE_DB,
 			user: process.env.DB_USER,
-			password: process.env.DB_PASS,
+			password: process.env.DB_PASSWORD,
 		});
 		// console.log("res:", response);
 		return await conn;

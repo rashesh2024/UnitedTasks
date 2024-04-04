@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .blue {
+      background-color: rgb(163, 221, 255);
+    }
+
+    .pink {
+      background-color: rgb(255, 166, 200);
+    }
+  </style>
+</head>
+
+<body onpagehide="onPageHide()" onpageshow="onPageShow()" onresize="onResize()" onload="onLoad()">
+
+  <table border="0" cellpadding="40">
+    <tr>
+      <td class="blue">
+        <p>OnClick</p>
+        <a href="" onclick="onClick()" onclick="onBlur()">Button</a>
+      </td>
+
+      <td class="pink">
+        <p>OnSubmit</p>
+        <form action="" onsubmit="onSubmit()">
+          <input type="submit" value="Submit" onsubmit="onSubmit()">
+          <button type="submit">Submit</button>
+        </form>
+      </td>
+
+      <td class="blue">
+        <p>OnBlur</p>
+        <input type="text" name="name" id="name" onblur="onBlur()">
+      </td>
+      <td class="pink">
+        <p>MouseDown</p>
+        <input type="text" name="name" id="name" onmousedown="onMouseDown()">
+      </td>
+
+      <td class="blue">
+        <p>onMouseOut</p>
+        <input type="text" name="name" id="name" onmouseout="onMouseOut()">
+      </td>
+
+      <td class="pink">
+        <p>Mouse up</p>
+        <input type="text" name="name" id="name" onmouseup="onMouseUp()">
+
+      </td>
+      <td class="blue">
+        <p>Mouse Move</p>
+        <input type="text" name="name" id="name" onmousemove="onMouseMove()">
+      </td>
+      <td class="pink">
+        <p>On Cut</p>
+        <input type="text" name="name" id="name" oncut="onCut()">
+
+      </td>
+    </tr>
+    <tr>
+      <td class="pink">
+        <p>Key UP</p>
+        <input type="text" name="name" id="name" onkeyup="onKeyUp()">
+      </td>
+      </td>
+      <td class="blue">
+        <p>On Key Down</p>
+        <input type="text" name="name" id="name" onkeydown="onKeyDown()">
+      </td>
+      </td>
+      <td class="pink">
+        <p>On Focus</p>
+        <input type="text" name="name" id="name" onfocus="onFocus()">
+      </td>
+      </td>
+      <td class="blue">
+        <p>OnChange</p>
+        <select id="mySelect" onchange="alert('onChange Trigger')">
+          <option value="Audi">Audi</option>
+          <option value="BMW">BMW</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="Volvo">Volvo</option>
+        </select>
+      </td>
+      </td>
+      <td class="pink">
+        <p>Doble Click</p>
+        <input type="button" value="Button" ondblclick="onDblClick()">
+      </td>
+      <td class="blue">
+        <p>On Drag </p>
+        <p ondrag="onDrag()" draggable="true">Drag Me</p>
+
+      </td>
+      <td class="pink">
+        <p>On Drag Start</p>
+        <p ondragstart="onDragStart()">Drag Me</p>
+      </td>
+      <td class="blue">
+        <p>On Drag Enter</p>
+        <p ondragenter="onDragEnter()">Drag Me</p>
+      </td>
+
+    </tr>
+
+    <tr>
+      <td class="blue">
+        <p>On Drag Over</p>
+        <p ondragover="onDragOver()">Drag Me</p>
+      </td>
+      <td class="pink">
+        <p>On Drag End</p>
+        <p ondragend="onDragEnd()">Drag Me</p>
+      </td>
+      <td class="blue">
+        <p>On Drag Leave</p>
+        <p ondragleave="onDragLeave()">Drag Me</p>
+      </td>
+      <td class="pink">
+        <p>On Drop</p>
+        <p ondrop="onDrop()">Drag Me</p>
+      </td>
+      <td class="blue">
+        <p>On INput</p>
+        <input type="text" name="name" id="name" oninput="onInput()">
+        <p id="inputDemo"></p>
+      </td>
+      <td class="pink">
+        <p>On Invalid</p>
+        <form action="" method="get" onreset="onReset()">
+          <input type="text" name="name" id="name" oninvalid="onInvalid()" required><button type="submit">Submit</button><button type="reset">Reset</button>
+        </form>
+      </td>
+      <td class="blue">
+        <p>Key Press</p>
+        <input type="text" name="name" id="name" onkeypress="onKeyPress()">
+      </td>
+      </td>
+      <td class="pink">
+        <p>Mouse Enter</p>
+        <input type="text" name="name" id="name" onmouseenter="onMouseEnter()">
+      </td>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td class="pink">
+        <p>Mouse Leave</p>
+        <input type="text" name="name" id="name" onmouseleave="onMouseLeave()">
+      </td>
+      </td>
+      <td class="blue">
+        <p>Mouse Over</p>
+        <input type="text" name="name" id="name" onmouseover="onMouseOver()">
+      </td>
+      </td>
+      <!-- <td class="pink"><p>On Page Show</p>
+                <p>Please Refresh the Page</p>
+            </td> -->
+
+
+      <td class="blue">
+        <p>on Paste</p>
+        <input type="text" name="name" id="name" onpaste="onPaste()">
+      </td>
+      </td>
+      <td class="pink">
+        <p>Try to Resize the window</p>
+      </td>
+      <td class="blue">
+        <p>On Select</p>
+        <input type="text" name="name" id="name" onselect="onSelect()">
+      </td>
+      <td class="pink">
+        <p>On Scroll</p>
+        <input type="text" name="name" id="name" onscroll="onScroll()">
+      </td>
+      <td class="blue">
+        <p>Toggle</p>
+        <input type="checkbox" name="name" id="name" ontoggle="onToggle()">
+      </td>
+
+    </tr>
+
+  </table>
+  <script src="../js/event.js"></script>
+</body>
+
+</html>

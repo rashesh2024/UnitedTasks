@@ -15,11 +15,12 @@ const insertData = async (basicDetails, preference) => {
 };
 
 const getData = async (eid) => {
+	let conn = await employeConnection();
 	try {
-		let resultLang = await employeConnection.query(
+		let resultLang = await conn.query(
 			`select * from language where emp_id = ${eid}`
 		);
-		let resultBasic = await employeConnection.query(
+		let resultBasic = await conn.query(
 			`SELECT *, preference.pref_location,preference.Department,preference.Expected_ctc,preference.Expected_ctc,preference.Notice_period FROM job_app_db_29.employe_master, job_app_db_29.preference where employe_master.emp_id = preference.emp_id and employe_master.emp_id = ${eid}`
 		);
 		return { resultBasic, resultLang };
@@ -28,20 +29,67 @@ const getData = async (eid) => {
 	}
 };
 
-const getStates = async () => {
+const states = async () => {
+	console.log(await employeConnection());
+	let conn = await employeConnection();
 	let sql = "select * from states";
-	let states = await employeConnection.query(sql);
-
+	let states = await conn.query(sql);
+	console.log(states);
 	return states[0];
 };
-const getCities = async (id) => {
+const cities = async (id) => {
+	let conn = await employeConnection();
 	let sql = `select * from cities where state_id = ${id}`;
-	let cities = await employeConnection.query(sql);
-
+	let cities = await conn.query(sql);
 	return cities[0];
 };
 
+const getForm = (req, res) => {
+	try {
+		res.render("pages/jobajax/index", { data: {} });
+	} catch (error) {
+		res.send(error);
+	}
+};
+
+const getStates = async (req, res) => {
+	let state = await states();
+	res.json(state);
+};
+
+const getCities = async (req, res) => {
+	let stateId = req.query.id;
+	let city = await cities(stateId);
+	res.json(city);
+};
+
+const searchEmp = async (req, res) => {
+	let conn = await employeConnection();
+	let result = {};
+	let lang = {};
+
+	if (req.query.id) {
+		let emp_id = req.query.id;
+		console.log(emp_id);
+		// let conn = await connection();
+		let data = await getData(emp_id);
+		result.Basic = data.resultBasic[0][0];
+
+		let hindi = data.resultLang[0][0];
+		let english = data.resultLang[0][1];
+		let gujarati = data.resultLang[0][2];
+		lang.Hindi = hindi;
+		lang.English = english;
+		lang.Gujarati = gujarati;
+		result.Lang = lang;
+		result.Basic.dob = result.Basic.dob.toISOString().slice(0, 10);
+		console.log(result);
+		res.json(result);
+	}
+};
+
 const insertEmploye = async (req, res) => {
+	let conn = await employeConnection();
 	let data = req.body;
 
 	let request = req.query;
@@ -92,10 +140,10 @@ const insertEmploye = async (req, res) => {
 
 			let deleteLang = `DELETE FROM language where emp_id = ${emp_id}`;
 
-			await employeConnection.query(updateBasic);
-			await employeConnection.query(updatePref);
-			await employeConnection.query(deleteLang);
-			await employeConnection.query(insertLang);
+			await conn.query(updateBasic);
+			await conn.query(updatePref);
+			await conn.query(deleteLang);
+			await conn.query(insertLang);
 
 			res.send("Data Updated SuccessFully !!");
 		} catch (error) {
@@ -132,7 +180,7 @@ const insertEmploye = async (req, res) => {
 			"insert into preference (emp_id,pref_location,Department,Expected_ctc,Current_ctc,Notice_period) values (?)";
 		if (data) {
 			try {
-				let result = await employeConnection.query(insertBasic2, [Basic]);
+				let result = await conn.query(insertBasic2, [Basic]);
 				eid = result[0].insertId;
 				console.log("Result:", eid);
 			} catch (error) {
@@ -206,12 +254,12 @@ const insertEmploye = async (req, res) => {
 				});
 				insertLang = insertLang.substring(0, insertLang.length - 1);
 				console.log(edu, ref, pref, work, tech);
-				await employeConnection.query(insertEduc, [edu]);
-				await employeConnection.query(insertWork, [work]);
-				await employeConnection.query(insertLang);
-				await employeConnection.query(insertTech, [tech]);
-				await employeConnection.query(insertRefe, [ref]);
-				await employeConnection.query(insertPref, [pref]);
+				await conn.query(insertEduc, [edu]);
+				await conn.query(insertWork, [work]);
+				await conn.query(insertLang);
+				await conn.query(insertTech, [tech]);
+				await conn.query(insertRefe, [ref]);
+				await conn.query(insertPref, [pref]);
 			} catch (error) {
 				console.log(error);
 			}
@@ -222,9 +270,11 @@ const insertEmploye = async (req, res) => {
 
 module.exports = {
 	dispData,
+	searchEmp,
 	insertData,
 	getData,
 	getStates,
 	getCities,
 	insertEmploye,
+	getForm,
 };

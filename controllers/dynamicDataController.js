@@ -8,24 +8,28 @@ const postGetInfo = (req, res) => {
 	let page = req.query.page || 1;
 	let mypage = req.url;
 
-	student2Connection.query(query, function (err, result, fields) {
-		//Finding Keys of Records
-		let keys = Object.keys(result[0]);
-		len = result.length;
+	if (query === "" || query === null || query === undefined) {
+		res.send("Go back & Please Enter Query");
+	} else {
+		student2Connection.query(query, function (err, result, fields) {
+			//Finding Keys of Records
+			let keys = Object.keys(result[0]);
+			len = result.length;
 
-		// Getting Length of all records
-		query += " LIMIT " + (page - 1) * 20 + ",20;";
-		student2Connection.query(query, function (err, result2, fields) {
-			res.render("pages/dynamicGrid/get_data", {
-				len: len,
-				heading: keys,
-				data: result2,
-				page: page,
-				query: query,
-				currPage: mypage,
+			// Getting Length of all records
+			query += " LIMIT " + (page - 1) * 20 + ",20;";
+			student2Connection.query(query, function (err, result2, fields) {
+				res.render("pages/dynamicGrid/get_data", {
+					len: len,
+					heading: keys,
+					data: result2,
+					page: page,
+					query: query,
+					currPage: mypage,
+				});
 			});
 		});
-	});
+	}
 };
 
 const getGetInfo = (req, res) => {

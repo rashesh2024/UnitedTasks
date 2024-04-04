@@ -1,6 +1,5 @@
 const express = require("express");
 const route = require("./router/routes");
-const jobform = require("./Job_MVC/router/router");
 const app = express();
 const cors = require("cors");
 const dotenv = require("dotenv").config();
@@ -13,7 +12,6 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(cors());
 app.use("/", route);
-app.use("/", jobform);
 
 app.listen(process.env.PORT, () => {
 	console.log("http://127.0.0.1:8000");
